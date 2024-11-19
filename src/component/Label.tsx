@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
   section: {
     width: "100%",
     alignItems: "flex-start",
+    paddingStart: 20,
   },
 
   label: {
