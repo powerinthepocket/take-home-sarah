@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from "react-native";
 import Colors from "@/src/constants/Colors";
 
 interface PortfolioValueCardProps {
-  value: string;
+  value: string | number;
   label: string;
 }
 const styles = StyleSheet.create({
