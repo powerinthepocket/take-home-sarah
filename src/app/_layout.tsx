@@ -1,4 +1,5 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -9,6 +10,7 @@ export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from "expo-router";
+const queryClient = new QueryClient();
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
@@ -44,12 +46,15 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="cryptoDetailsScreen"
-        options={{ headerShown: false }}
-      />
-    </Stack>
+    <QueryClientProvider client={queryClient}>
+      <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen name="settingsScreen" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="cryptoDetailsScreen"
+          options={{ headerShown: false }}
+        />
+      </Stack>
+    </QueryClientProvider>
   );
 }
